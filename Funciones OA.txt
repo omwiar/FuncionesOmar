@@ -1,0 +1,12 @@
+PRIMERAPALABRA = LAMBDA(valor,[separador],(
+    LET(separado,IF(ISOMITTED(separador)," ",separador),
+    TRIM(LEFT(valor,FIND(separado,valor)-1)))));
+ULTIMAPALABRA = LAMBDA(valor,[separador],(
+    LET(separado,IF(ISOMITTED(separador)," ",separador),
+    TRIM(RIGHT(SUBSTITUTE(valor,separado,REPT(" ",LEN(valor))),LEN(valor))))));
+ENESIMAPALABRA = LAMBDA(valor,numerodepalabra,[separador],(
+    LET(separado,IF(ISOMITTED(separador)," ",separador),
+    TRIM(MID(SUBSTITUTE(TRIM(valor),separado,REPT(" ",LEN(TRIM(valor)))), (numerodepalabra-1)*LEN(TRIM(valor))+1, LEN(TRIM(valor)))))));
+CONTARPALABRAS = LAMBDA(valor,[separador],(
+    LET(separado,IF(ISOMITTED(separador)," ",separador),
+ LEN(TRIM(valor))-LEN(SUBSTITUTE(TRIM(valor), separado, "")) + 1)))
